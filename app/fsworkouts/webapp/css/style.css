@@ -1,0 +1,82 @@
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+body {
+    background-color: black;
+}
+.graphics{
+  justify-content: center;
+  display: flex;
+
+}
+.clock{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 50 auto;
+}
+.HtmlIsland{
+    /*outline: solid 1px yellow;
+    outline-offset: -1px;*/
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.timerText{
+  outline-offset: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 360px;
+  font-weight: 200;
+  text-align: center;
+  height:360px;
+  margin-right: 0px;
+  font-feature-settings: "tnum";
+}   
+.exerciseText{
+  color: white;
+  font-size: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  text-align: center;
+  height:120px;
+  margin-top: 0px;
+  margin-right: 0px;
+  font-feature-settings: "tnum";
+}
+.exerciseInfo{
+  width: 100%;
+  color: grey;
+  font-size: 72px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  text-align: center;
+  height:100px;
+  margin-top: 40px;
+  margin-left: 0px;
+  font-feature-settings: "tnum";
+}
+.roundInfo{
+  width: 100%;
+  color: grey;
+  font-size: 72px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  text-align: center;
+  height:100px;
+  margin-top: 0px;
+  margin-right: 0px;
+  z-index: 3;
+  font-feature-settings: "tnum";
+}
+
+

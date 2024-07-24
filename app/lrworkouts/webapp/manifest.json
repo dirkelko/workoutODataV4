@@ -1,0 +1,182 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "lrworkouts",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.14.1",
+      "toolsId": "3c40b52b-7d92-4368-8a02-0549734e4e9e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/browse/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.126.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "lrworkouts.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "WorkoutsList",
+          "target": "WorkoutsList"
+        },
+        {
+          "pattern": "Workouts({key}):?query:",
+          "name": "WorkoutsObjectPage",
+          "target": "WorkoutsObjectPage"
+        },
+        {
+          "pattern": "Workouts({key})/exercises({key2}):?query:",
+          "name": "WorkoutExercisesObjectPage",
+          "target": "WorkoutExercisesObjectPage"
+        }
+      ],
+      "targets": {
+        "WorkoutsList": {
+          "type": "Component",
+          "id": "WorkoutsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Workouts",
+              "variantManagement": "Page",
+              "navigation": {
+                "Workouts": {
+                  "detail": {
+                    "route": "WorkoutsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "WorkoutsObjectPage": {
+          "type": "Component",
+          "id": "WorkoutsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Workouts",
+              "navigation": {
+                "exercises": {
+                  "detail": {
+                    "route": "WorkoutExercisesObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "WorkoutExercisesObjectPage": {
+          "type": "Component",
+          "id": "WorkoutExercisesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Workouts/exercises",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "ExerciseVideo": {
+                      "template": "lrworkouts.ext.fragment.ExerciseVideo",
+                      "title": "Exercise Video"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

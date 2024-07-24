@@ -1,0 +1,32 @@
+{
+  "name": "workout",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@ui5/webcomponents": "^2.0.1",
+    "express": "^4",
+    "nosleep": "^2.0.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.14"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-wolistreport": "cds watch --open wolistreport/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-lrworkouts": "cds watch --open lrworkouts/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-fsworkouts": "cds watch --open fsworkouts/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-lrworkouts2": "cds watch --open lrworkouts2/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/wolistreport",
+    "app/lrworkouts",
+    "app/lrworkouts",
+    "app/lrworkouts2"
+  ]
+}

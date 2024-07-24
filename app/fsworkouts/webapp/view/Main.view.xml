@@ -1,0 +1,81 @@
+<mvc:View controllerName="fsworkouts.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+    xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'fsworkouts/model/formatter'
+	}">
+	<Page
+		title="SAP BODYWEIGHT WORKOUT"
+		id="mainPage">
+		<content>
+            <!--IconTabBar id="iconTabBar" selectedKey="0" select=".onLevelSelect" class="sapUiResponsiveContentPadding" expandable="false"-->
+            <IconTabBar id="iconTabBar" selectedKey="0" select=".onLevelSelect"  class="sapUiResponsiveContentPadding" expandable="false">
+                <items>
+                    <IconTabFilter id="iconTabFilter0" icon="sap-icon://physical-activity" text="All" key="0" visible="false"/>
+                    <IconTabFilter id="iconTabFilter1" icon="sap-icon://physical-activity" iconColor="Neutral" text="Level 1" key="1"/>
+                    <IconTabFilter id="iconTabFilter2" icon="sap-icon://physical-activity" iconColor="Positive" text="Level 2" key="2"/>
+                    <IconTabFilter id="iconTabFilter3" icon="sap-icon://physical-activity" iconColor="Default" text="Level 3" key="3"/>
+                    <IconTabFilter id="iconTabFilter4" icon="sap-icon://physical-activity" iconColor="Critical" text="Level 4" key="4" visible="false"/>
+                    <IconTabFilter id="iconTabFilter5" icon="sap-icon://heart" iconColor="Critical" text="Favourites" key="F"/>
+                </items>
+            </IconTabBar>
+                <!--content-->
+                    <f:GridList
+                        id="workoutsList"
+                        items="{
+                            path: 'workoutsModel>/Workouts', 
+                            parameters: { 
+                                $$getKeepAliveContext: true,
+                                $expand:{
+                                    exercises: {
+                                        $select:'duration,pause'  
+                                    }
+                                }
+                            }, 
+                            sorter: {
+                                path:'ID', 
+                                group:false, 
+                                descending: false
+                            }
+                        }"
+                        noDataText="No workouts"
+                        mode="SingleSelectMaster" 
+                        selectionChange=".navToWorkout">
+                        <f:customLayout>
+                            <grid:GridBoxLayout/>
+                        </f:customLayout>
+                        <f:items>
+                            <CustomListItem  type="Active" >
+                                <layoutData>
+                                    <FlexItemData
+                                        growFactor="1"
+                                        shrinkFactor="0"/>
+                                </layoutData>
+                                <HBox justifyContent="SpaceBetween">
+                                    <VBox justifyContent="SpaceBetween" class="sapUiSmallMarginTop sapUiSmallMarginBegin">
+                                        <Title text="{workoutsModel>name} {workoutsModel>level}"/>
+                                        <Label text="{workoutsModel>for}"/>
+                                    <ObjectNumber number="{path:'workoutsModel>duration', targetType:'int', formatter:'.toMinutes'}" unit="min"/>
+                                    <!--ObjectNumber number="{path:'workoutsModel>exercises', formatter:'.calcDuration', targetType:'any', mode : 'OneWay'}" unit="min"/-->
+                                    </VBox>
+                                    <core:Icon
+                                        src="sap-icon://physical-activity"
+                                        color="{path: 'workoutsModel>level', formatter:'.formatIconColor'}"
+                                        size="2.5rem"
+                                        class="sapUiSmallMarginTop sapUiSmallMarginEnd"/>
+                                </HBox>
+                            </CustomListItem>
+                        </f:items>
+                        <f:noData>
+                            <IllustratedMessage enableVerticalResponsiveness="true" illustrationType="sapIllus-EmptyList"/>
+                        </f:noData>
+                    </f:GridList>
+                <!--/content-->
+            <!--/IconTabBar-->
+		</content>
+	</Page>
+</mvc:View>

@@ -37,14 +37,14 @@ function App() {
 
   function handleRowClick(event: CustomEvent ) {
     console.log(`Row clicked: ${event.detail.row.childNodes[0].innerText} ${event.detail.row.childNodes[1].innerText}`);
-    let ex = exercises.find(ex => ex.ID === parseInt(event.detail.row.getAttribute("row-key")));
+    let ex: any = exercises.find((ex: any) => ex.ID === parseInt(event.detail.row.getAttribute("row-key")));
     setExercise(ex!);
     timerRef.current.resetTimer();
   };
 
   function handleTimerFinished(event: CustomEvent) {
     console.log(`Timer finished ${event.type}`);
-    let ex = exercises.find(ex => ex.id === exercise.id+1);
+    let ex: any = exercises.find((ex: any ) => ex.id === exercise.id+1);
     console.log(ex);
     if (ex) {
       setExercise(ex!);
@@ -86,7 +86,7 @@ function App() {
         <ui5-table-header-cell id="roundCol" width="60px" importance="-1">Round</ui5-table-header-cell>
         <ui5-table-header-cell id="durationCol" min-width="40px" importance="2">Duration</ui5-table-header-cell>
         </ui5-table-header-row>
-          {exercises.map((ex) => (
+          {exercises.map((ex: any) => (
             <ui5-table-row row-key={ex.ID} key={ex.ID} interactive={tableIsInteractive}>
                {textColor = (exercise.ID === ex.ID)? "var(--sapCriticalElementColor)" : "var(--sapTextColor)"}
               <ui5-table-cell><ui5-text><b style={{color: textColor}}>{ex.ID}</b></ui5-text></ui5-table-cell>

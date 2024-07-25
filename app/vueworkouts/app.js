@@ -1,10 +1,20 @@
 /* global Vue axios */ //> from vue.html
 
+//const { createApp } = require("vue/dist/vue.js")
+
+import "@ui5/webcomponents/dist/Text.js";
+import "@ui5/webcomponents/dist/Table.js";
+import "@ui5/webcomponents/dist/TableCell.js";
+import "@ui5/webcomponents/dist/TableHeaderRow.js";
+import "@ui5/webcomponents/dist/TableHeaderCell.js";
+
+import {createApp} from 'vue'
+
 const $ = sel => document.querySelector(sel)
 const GET = (url) => axios.get('/browse'+url)
 const POST = (cmd,data) => axios.post('/browse'+cmd,data)
 
-const exercises = Vue.createApp ({
+const exercises = createApp ({
 
     data() {
       return {

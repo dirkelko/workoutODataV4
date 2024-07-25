@@ -1,0 +1,1 @@
+using WorkoutService as service from '../../srv/workouts-service';

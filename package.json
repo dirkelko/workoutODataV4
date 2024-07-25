@@ -7,9 +7,19 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^8",
-    "@ui5/webcomponents": "^2.0.1",
+    "@ui5/webcomponents": "2.0.1",
+    "@ui5/webcomponents-base": "2.0.1",
+    "@ui5/webcomponents-fiori": "2.0.1",
+    "@ui5/webcomponents-icons": "2.0.1",
+    "@webcomponents/custom-elements": "^1.3.2",
+    "@webcomponents/shadydom": "^1.7.1",
+    "vue": "^3.2.47",
     "express": "^4",
-    "nosleep": "^2.0.0"
+    "nosleep": "^2.0.0",
+    "axios": "^1.7.2",
+    "react": "npm:react@rc",
+    "react-dom": "npm:react-dom@rc",
+    "ui5-timer": "^0.0.12"  
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.6",

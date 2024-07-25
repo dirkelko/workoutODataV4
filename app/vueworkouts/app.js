@@ -27,7 +27,7 @@ const exercises = createApp ({
 
     methods: {
 
-        search: ({target:{value:v}}) => exercises.fetch(v && '&$search='+v),
+        search: ({target:{value:v}}) => exercises.fetch(v && '?$search='+v),
 
         async fetch (etc='') {
             const {data} = await GET(`/Exercises${etc}`)

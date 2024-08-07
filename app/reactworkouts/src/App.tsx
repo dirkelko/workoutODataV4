@@ -13,8 +13,7 @@ import {useState, useRef, useEffect} from "react";
 
 import axios from 'axios';
 
-let exercises: any = []
-;
+//let exercises: any = [];
 
 setTheme('sap_horizon_dark');
 
@@ -23,16 +22,15 @@ setTheme('sap_horizon_dark');
 
 function App() {
 
-  const [exercise, setExercise] = useState(exercises[0]);
+  const [exercise, setExercise] = useState({});
+  const [exercises, setExercises] = useState([]);
   const [tableIsInteractive, setTableIsInteractive] = useState(true);
-  const [loadedRows, setLoadedRows] = useState(0);
   const timerRef: any = useRef(null);
 
   useEffect( () => {
     axios.get('http://localhost:4004/browse/Workouts(10)?$expand=exercises($expand=exercise$top=10)').then((res: any) => {
-      exercises = res.data.exercises;
-      setExercise(exercises[0]);
-      setLoadedRows(10);
+      setExercises(res.data.exercises);
+      setExercise(res.data.exercises[0]);
     })
   }, []);
 
@@ -69,9 +67,7 @@ function App() {
   function handleLoadMore(event: CustomEvent) {
     console.log(`Load More ${event.type}`);
       axios.get(`http://localhost:4004/browse/Workouts(10)?$expand=exercises($expand=exercise$skip=${exercises.length}$top=${10})`).then((res: any) => {
-        exercises = exercises.concat(res.data.exercises);
-        //setExercise(exercises[0]);
-        setLoadedRows(exercises.length);
+        setExercises(exercises.concat(res.data.exercises));
       })
   }
 

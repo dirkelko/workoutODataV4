@@ -3,6 +3,7 @@ import "@ui5/webcomponents/dist/Table.js";
 import "@ui5/webcomponents/dist/TableCell.js";
 import "@ui5/webcomponents/dist/TableHeaderRow.js";
 import "@ui5/webcomponents/dist/TableHeaderCell.js";
+import "@ui5/webcomponents/dist/TableGrowing.js";
 //import exercises from "./exercises";
 import "./App.css";
 import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme.js';
@@ -24,12 +25,14 @@ function App() {
 
   const [exercise, setExercise] = useState(exercises[0]);
   const [tableIsInteractive, setTableIsInteractive] = useState(true);
+  const [loadedRows, setLoadedRows] = useState(0);
   const timerRef: any = useRef(null);
 
   useEffect( () => {
-    axios.get('http://localhost:4004/browse/Workouts(10)?$expand=exercises($expand=exercise)').then((res: any) => {
+    axios.get('http://localhost:4004/browse/Workouts(10)?$expand=exercises($expand=exercise$top=10)').then((res: any) => {
       exercises = res.data.exercises;
       setExercise(exercises[0]);
+      setLoadedRows(10);
     })
   }, []);
 
@@ -63,6 +66,15 @@ function App() {
     setTableIsInteractive(true);  
   }
 
+  function handleLoadMore(event: CustomEvent) {
+    console.log(`Load More ${event.type}`);
+      axios.get(`http://localhost:4004/browse/Workouts(10)?$expand=exercises($expand=exercise$skip=${exercises.length}$top=${10})`).then((res: any) => {
+        exercises = exercises.concat(res.data.exercises);
+        //setExercise(exercises[0]);
+        setLoadedRows(exercises.length);
+      })
+  }
+
   return (exercises.length>0)?(
 
     <div>
@@ -80,6 +92,7 @@ function App() {
       />
 
       <ui5-table id="table1" overflowMode="Popin" onrowClick={handleRowClick}> 
+      <ui5-table-growing type="Scroll" growing-text="More" slot="features" onloadMore={handleLoadMore}></ui5-table-growing>
         <ui5-table-header-row slot="headerRow">
         <ui5-table-header-cell id="idCol" importance="3" width="50px"><span>Id</span></ui5-table-header-cell>
         <ui5-table-header-cell id="nameCol" importance="1" width="300px"><span>Name</span></ui5-table-header-cell>

@@ -10,5 +10,6 @@ declare namespace JSX {
         "ui5-list": unknown;
         "ui5-li": unknown;
         "ui5-timer": unknown;
+        "ui5-table-growing": unknown;
     }
   }

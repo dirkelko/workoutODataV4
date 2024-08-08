@@ -1,23 +1,29 @@
-# Getting Started
+# UI5 Web Components examples using OData V4 service
 
-Welcome to your new project.
-
-It contains these folders and files, following our recommended project layout:
+This project contains Vue and React examples using the new UI5 Web Components Table (next to UI5 samples), using a "real" CAP based OData V4 service. The React examples use React 19rc which supports custom components directly.
 
 File or Folder | Purpose
 ---------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
+`app/` | folder for UI frontends 
+`app/reactworkouts` | React 19 app showing a custom UI5 web compontent (Timer) and the UI5 Web Component Table using OData V4 service and showing eventing between table and custom web copmonent. 
+`app/reactexercises` | React 19 app with UI5 Web Component Table showing the list of 637 exercises using the growing capabilities of the table. 
+`app/reactworkouts/dist` | built version of the app above. 
+`app/reactexercises/dist` | built version of the app above. 
+`app/vueexercises` | Vue app with UI5 Web Component Table showing the list of 637 exercises. 
+`app/fsworkouts` | UI5 freestyle app showing workouts with exercises. 
+`app/lrworkouts` | Fiori Elements List Report showing workouts with exercises. 
+`db/` | data files with workout and exercises data
+`srv/` | OData service for Workouts and Exercises
 `package.json` | project metadata and configuration
-`readme.md` | this getting started guide
 
 
-## Next Steps
+## Run the examples
 
-- Open a new terminal and run `cds watch`
+- Open a new terminal in the main workouts folder, run `npm install` and then `cds watch`
 - (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+- open [http](http://localhost:4004/)
+- the Vue, UI5 and Fiori elements apps, and the built versions (.../dist) of the React apps can be opened directly.
+- to test and debug the dev versions of the React apps, go to the application folder (/reactexercises or /reactworkouts) and run `np run dev` (in addition to `cds watch` in the workouts folder) which will serve the UIs at port 5173 (while the OData service is served at port 4004)
 
 
 ## Learn More

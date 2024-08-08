@@ -27,7 +27,7 @@ function App() {
   function handleLoadMore(event: CustomEvent) {
     //console.log(`Load More ${event.type}`);
       axios.get(`http://localhost:4004/browse/Exercises?$skip=${exercises.length}&$top=50`).then((res: any) => {
-        console.log(`loaded from ${exercises.length+1} to ${exercises.length + res.data.value.length}`);
+        console.log(`${event.type} - loaded from ${exercises.length+1} to ${exercises.length + res.data.value.length}`);
         setExercises(exercises.concat(res.data.value));
       })
   }

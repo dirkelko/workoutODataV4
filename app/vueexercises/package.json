@@ -17,8 +17,8 @@
       "@ui5/webcomponents-base": "2.0.1",
       "@ui5/webcomponents-fiori": "2.0.1",
       "@ui5/webcomponents-icons": "2.0.1",
-      "@webcomponents/custom-elements": "2.0.1",
-      "@webcomponents/shadydom": "2.0.1",
+      "@webcomponents/custom-elements": "1.6.0",
+      "@webcomponents/shadydom": "1.11.0",
       "vue": "^3.2.47"
     },
     "devDependencies": {

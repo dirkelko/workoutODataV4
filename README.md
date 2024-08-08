@@ -1,6 +1,6 @@
 # UI5 Web Components examples using OData V4 service
 
-This project contains Vue and React examples using the new UI5 Web Components Table (next to UI5 samples), using a "real" CAP based OData V4 service. The React examples use React 19rc which supports custom components directly.
+This project contains Vue and React examples using the new UI5 Web Components 2.0 Table (next to UI5 samples), using a "real" CAP based OData V4 service. The React examples use React 19rc which supports custom components directly.
 
 File or Folder | Purpose
 ---------|----------
@@ -28,4 +28,4 @@ File or Folder | Purpose
 
 ## Learn More
 
-Learn more at https://cap.cloud.sap/docs/ https://sap.github.io/ui5-webcomponents/ 
+Learn more at https://sap.github.io/ui5-webcomponents/ 

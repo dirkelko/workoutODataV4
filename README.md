@@ -20,7 +20,6 @@ File or Folder | Purpose
 ## Run the examples
 
 - Install the SAP CDS Development kit with `npm i -g @sap/cds-dk`
-(on Windows installation of sqlite is required)
 - Open a new terminal in the main workoutODataV4 folder, run `npm install` and then `cds serve`
 - (in VS Code simply choose _**Terminal** > Run Task > cds serve_)
 - open [http://localhost:4004/](http://localhost:4004/)

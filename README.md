@@ -24,7 +24,7 @@ File or Folder | Purpose
 - (in VS Code simply choose _**Terminal** > Run Task > cds serve_)
 - open [http://localhost:4004/](http://localhost:4004/)
 - the Vue, UI5 and Fiori elements apps, and the built versions (.../dist) of the React apps can be opened directly.
-- to test and debug the dev versions of the React apps, go to the application folder (/reactexercises or /reactworkouts) and run `np run dev` (in addition to `cds watch` in the workouts folder) which will serve the UIs at port 5173 (while the OData service is served at port 4004)
+- to test and debug the dev versions of the React apps, go to the application folder (/reactexercises or /reactworkouts) and run `npm install`followed by `np run dev` (in addition to `cds watch` in the workouts folder) which will serve the UIs at port 5173 (while the OData service is served at port 4004)
 
 
 ## Learn More

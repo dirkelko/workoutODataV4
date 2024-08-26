@@ -87,8 +87,8 @@ function App() {
         ontimerStop={handleTimerStop}
       />
 
-      <ui5-table id="table1" overflowMode="Popin" onrowClick={handleRowClick}> 
-      <ui5-table-growing type="Scroll" growing-text="More" slot="features" onloadMore={handleLoadMore}></ui5-table-growing>
+      <ui5-table id="table1" overflow-mode="Popin" onrow-click={handleRowClick}> 
+      <ui5-table-growing type="Scroll" growing-text="More" slot="features" onload-more={handleLoadMore}></ui5-table-growing>
         <ui5-table-header-row slot="headerRow">
         <ui5-table-header-cell id="idCol" importance="3" width="50px"><span>Id</span></ui5-table-header-cell>
         <ui5-table-header-cell id="nameCol" importance="1" width="300px"><span>Name</span></ui5-table-header-cell>
